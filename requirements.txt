@@ -1,0 +1,13 @@
+# PyCorrectorCompare 依赖包
+
+# pycorrector 及其依赖
+pycorrector>=0.4.0
+
+# PyTorch (根据服务器环境可能需要调整)
+torch>=1.10.0
+
+# transformers (MacBERT 依赖)
+transformers>=4.20.0
+
+# 其他工具
+tqdm>=4.60.0
