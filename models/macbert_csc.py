@@ -57,8 +57,12 @@ class MacBertCSCCorrector(BaseCorrector):
             self.load_model()
         
         # 调用 pycorrector 的纠错方法
-        # 返回格式: (corrected_text, [(wrong, correct, position), ...])
-        corrected_text, error_details = self._corrector.correct(sentence)
+        # 返回格式为字典:
+        # {'source': '原句子', 'target': '纠正后的句子', 'errors': [('错误词', '正确词', '错误位置'), ...]}
+        result = self._corrector.correct(sentence)
+        
+        corrected_text = result.get('target', sentence)
+        error_details = result.get('errors', [])
         
         # 解析错误详情
         errors = self._parse_errors(error_details)
