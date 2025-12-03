@@ -116,6 +116,9 @@ def run_evaluation(
 
 
 def main():
+    from datasets import load_dataset
+    ds = load_dataset("shibing624/chinese_text_correction")
+    datas = ds['train'][0:1000]
     """主函数"""
     # ===================================
     # 在这里填入错误句子列表
@@ -127,6 +130,7 @@ def main():
         # "我门一起去公园",
         # "这个问提很难",
     ]
+    error_sentences = [src for src, label in zip(datas['source'], datas['type']) if label == 'negative']
     
     if not error_sentences:
         print("警告: 错误句子列表为空，请在 main.py 中填入数据")

@@ -32,7 +32,7 @@ class MacBertCSCCorrector(BaseCorrector):
         
         try:
             from pycorrector import MacBertCorrector
-            self._corrector = MacBertCorrector()
+            self._corrector = MacBertCorrector("shibing624/macbert4csc-base-chinese")
             self._model = self._corrector  # 保持与基类一致
             print(f"[{self.model_name}] 模型加载成功")
         except ImportError as e:
